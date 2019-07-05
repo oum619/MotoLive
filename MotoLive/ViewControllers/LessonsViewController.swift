@@ -37,14 +37,16 @@ class LessonsViewController: UIViewController {
       self.refreshControl.endRefreshing()
       switch result {
       case .success(let items):
-        DispatchQueue.main.async {
-          print("retrived lessons: \(items)")
-          self.lessons = items
-          self.tableView.reloadData()
-        }
+        print("retrived lessons: \(items)")
+        self.lessons = items
+        self.tableView.reloadData()
       case .failure(let error):
         print("retrive error on get lessons: \(error)")
-        //show error
+        let alert = UIAlertController(title: "Network Error", message: "Please check your Internet connection and pull to refresh to try again.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
+        self.present(alert, animated: true){
+          self.tableView.setContentOffset(.zero, animated: true)
+        }
       }
     }
   }

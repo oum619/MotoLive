@@ -35,7 +35,11 @@ class VideoViewController: AVPlayerViewController{
     }
     else{
       print("oops this video \(lesson.videoURL) link is broken")
-      //show an error
+      let alert = UIAlertController(title: "Video Unavailable", message: "This video is unavailable at the moment please try again later.", preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
+      self.present(alert, animated: true){
+        self.dismiss(animated: true, completion: nil)
+      }
     }
   }
   override func viewDidAppear(_ animated: Bool) {

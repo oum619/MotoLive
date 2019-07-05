@@ -7,8 +7,8 @@
 //
 
 import Foundation
-
-class LessonViewManager {
+import RealmSwift
+class LessonViewManager : DBManager{
   
   private let apiClient: APIClient!
   
@@ -21,13 +21,28 @@ class LessonViewManager {
       switch result {
       case .success(let data):
         do {
-          let items = try JSONDecoder().decode([Lesson].self, from: data)
-          completion(.success(items))
+          let lessons = try JSONDecoder().decode([Lesson].self, from: data)
+          DispatchQueue.main.async {
+            try! self.db.write() {
+              self.db.add(lessons)
+            }
+          }
+          completion(.success(lessons))
         } catch {
           completion(.failure(error))
         }
       case .failure(let error):
-        completion(.failure(error))
+        DispatchQueue.main.async {
+          let storedLessons = self.db.objects(Lesson.self)
+          if storedLessons.count > 0{
+            var backup : [Lesson] = []
+            for result in storedLessons{
+              backup.append(result)
+            }
+            completion(.success(backup))
+          }
+          completion(.failure(error))
+        }        
       }
     }
   }

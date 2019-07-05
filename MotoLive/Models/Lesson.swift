@@ -7,12 +7,15 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Lesson: Codable {
-  let title, presenterName, lessonDescription: String
-  let thumbnailURL: String
-  let videoURL: String
-  let videoDuration: Int
+class Lesson : Object, Codable {
+  @objc dynamic var title: String
+  @objc dynamic var presenterName : String
+  @objc dynamic var lessonDescription: String
+  @objc dynamic var thumbnailURL: String
+  @objc dynamic var videoURL: String
+  @objc dynamic var videoDuration: Int
   
   enum CodingKeys: String, CodingKey {
     case title

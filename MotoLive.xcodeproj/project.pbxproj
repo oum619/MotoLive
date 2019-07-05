@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4DA88BE922CEE54D00F60BEB /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA88BE822CEE54D00F60BEB /* DBManager.swift */; };
 		4DF2BFA422CCCE47004F85F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2BFA322CCCE47004F85F2 /* AppDelegate.swift */; };
 		4DF2BFA622CCCE47004F85F2 /* LessonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2BFA522CCCE47004F85F2 /* LessonsViewController.swift */; };
 		4DF2BFA922CCCE47004F85F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2BFA722CCCE47004F85F2 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 		0DDA55A8F4D45265D563488D /* Pods-MotoLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MotoLive.debug.xcconfig"; path = "Target Support Files/Pods-MotoLive/Pods-MotoLive.debug.xcconfig"; sourceTree = "<group>"; };
 		1837688FDBB1B2652092B063 /* Pods_MotoLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MotoLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A8498BEDE8763679201FAB4 /* Pods-MotoLiveTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MotoLiveTests.release.xcconfig"; path = "Target Support Files/Pods-MotoLiveTests/Pods-MotoLiveTests.release.xcconfig"; sourceTree = "<group>"; };
+		4DA88BE822CEE54D00F60BEB /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		4DF2BFA022CCCE47004F85F2 /* MotoLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MotoLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DF2BFA322CCCE47004F85F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DF2BFA522CCCE47004F85F2 /* LessonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				4DF2BFCB22CCD5FA004F85F2 /* LessonsViewManager.swift */,
+				4DA88BE822CEE54D00F60BEB /* DBManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -186,7 +189,7 @@
 				4DF2BF9C22CCCE47004F85F2 /* Sources */,
 				4DF2BF9D22CCCE47004F85F2 /* Frameworks */,
 				4DF2BF9E22CCCE47004F85F2 /* Resources */,
-				274EE7E9F02DBBEDB084D749 /* [CP] Embed Pods Frameworks */,
+				6001F09A1FB7F7D75F880A31 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -297,23 +300,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		274EE7E9F02DBBEDB084D749 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MotoLive/Pods-MotoLive-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MotoLive/Pods-MotoLive-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MotoLive/Pods-MotoLive-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5A10013B87B8210E47DAD041 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -336,6 +322,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6001F09A1FB7F7D75F880A31 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MotoLive/Pods-MotoLive-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MotoLive/Pods-MotoLive-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MotoLive/Pods-MotoLive-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -346,6 +349,7 @@
 				4DF2BFC522CCCF92004F85F2 /* Lesson.swift in Sources */,
 				4DF2BFD222CECE33004F85F2 /* VideoViewController.swift in Sources */,
 				4DF2BFCF22CCDF50004F85F2 /* LessonCell.swift in Sources */,
+				4DA88BE922CEE54D00F60BEB /* DBManager.swift in Sources */,
 				4DF2BFA622CCCE47004F85F2 /* LessonsViewController.swift in Sources */,
 				4DF2BFA422CCCE47004F85F2 /* AppDelegate.swift in Sources */,
 				4DF2BFC922CCD2DE004F85F2 /* APIClient.swift in Sources */,

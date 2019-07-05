@@ -8,29 +8,35 @@
 
 import Foundation
 
-enum Result<T> {
+enum APIResult<T> {
   case success(T)
   case failure(Error)
 }
 
-enum APIClientError: Error {
+enum APIError: Error {
   case noData
 }
 
 class APIClient {
   
-  func getLessons(result: @escaping ((Result<Data>) -> Void)) {
+  func getLessons(result: @escaping ((APIResult<[Lesson]>) -> Void)) {
     let request = URLRequest(url: URL(string: "https://quipper.github.io/native-technical-exam/playlist.json")!)
     let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
       guard let data = data else {
-        result(.failure(APIClientError.noData))
+        result(.failure(APIError.noData))
         return
       }
       if let error = error {
         result(.failure(error))
         return
       }
-      result(.success(data))
+      do{
+        let lessons = try JSONDecoder().decode([Lesson].self, from: data)
+        result(.success(lessons))
+      }
+      catch{
+        result(.failure(error))
+      }
     }
     task.resume()
   }

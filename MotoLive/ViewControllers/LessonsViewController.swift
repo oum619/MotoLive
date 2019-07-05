@@ -7,18 +7,34 @@
 //
 
 import UIKit
-import AVKit
 
 class LessonsViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
-  let lessonsManager = LessonViewManager(apiClient: APIClient())
-  var lessons:[Lesson] = []
+  let refreshControl = UIRefreshControl()
+  var lessons = LessonManager.shared.getLessons()
+  var lessonProgress = LessonManager.shared.getLessonsProgress()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    navigationController?.delegate = self
-    lessonsManager.getLessons(){ (result) in
+    tableView.tableFooterView = UIView()
+    tableView.refreshControl = refreshControl
+    refreshControl.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+    pullToRefresh()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    tableView.reloadData()
+  }
+  
+  override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+    return .portrait
+  }
+  
+  @objc func pullToRefresh(){
+    LessonManager.shared.downloadLessons{ (result) in
+      self.refreshControl.endRefreshing()
       switch result {
       case .success(let items):
         DispatchQueue.main.async {
@@ -28,6 +44,7 @@ class LessonsViewController: UIViewController {
         }
       case .failure(let error):
         print("retrive error on get lessons: \(error)")
+        //show error
       }
     }
   }
@@ -40,7 +57,9 @@ extension LessonsViewController : UITableViewDataSource{
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: LessonCell.reuseIdentifier) as! LessonCell
-    cell.configure(lesson: lessons[indexPath.row])
+    let lesson = lessons[indexPath.row]
+    let progress = lessonProgress.filter{$0.lessonId == lesson.lessonId}.first
+    cell.configure(lesson: lesson ,progress: progress)
     return cell
   }
 }
@@ -48,24 +67,10 @@ extension LessonsViewController : UITableViewDataSource{
 extension LessonsViewController : UITableViewDelegate{
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let lesson = lessons[indexPath.row]
-    if let videoURL = URL(string:lesson.videoURL){
-      let player = AVPlayer(url: videoURL)
-      let playerViewController = VideoViewController()
-      playerViewController.player = player
-      present(playerViewController, animated: true) {
-        player.play()
-      }
-    }
-    else{
-      print("oops this video \(lesson.videoURL) link is broken")
-      //show an error
-    }
+    let progress = lessonProgress.filter{$0.lessonId == lesson.lessonId}.first
+    let videoVC = VideoViewController(lesson: lesson, progress: progress)
+    present(videoVC, animated: true, completion: nil)
   }
 }
 
-extension LessonsViewController : UINavigationControllerDelegate{
-  func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
-    return .portrait
-  }
-}
 

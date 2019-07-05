@@ -10,12 +10,13 @@ import Foundation
 import RealmSwift
 
 class Lesson : Object, Codable {
+  @objc dynamic var lessonId = Int(arc4random_uniform(9999999))
   @objc dynamic var title: String
   @objc dynamic var presenterName : String
   @objc dynamic var lessonDescription: String
   @objc dynamic var thumbnailURL: String
   @objc dynamic var videoURL: String
-  @objc dynamic var videoDuration: Int
+  @objc dynamic var videoDuration: Int //video length in miliseconds
   
   enum CodingKeys: String, CodingKey {
     case title
@@ -24,5 +25,8 @@ class Lesson : Object, Codable {
     case thumbnailURL = "thumbnail_url"
     case videoURL = "video_url"
     case videoDuration = "video_duration"
+  }
+  override static func primaryKey() -> String? {
+    return "lessonId"
   }
 }

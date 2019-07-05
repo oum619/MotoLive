@@ -18,28 +18,36 @@ class LessonCell : UITableViewCell{
   @IBOutlet weak var thumbnail: UIImageView!
   @IBOutlet weak var byline: UILabel!
   @IBOutlet weak var lessonDescription: UILabel!
+  @IBOutlet weak var lessonProgress: UIProgressView!
   
   
   override func awakeFromNib() {
     super.awakeFromNib()
     duration.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-    duration.layer.cornerRadius = 5    
-    
-    
+    duration.layer.cornerRadius = 5
   }
-  func configure(lesson:Lesson){
+  
+  func configure(lesson:Lesson, progress:LessonProgress?){
     thumbnail.sd_setImage(with: URL(string: lesson.thumbnailURL), placeholderImage: nil, options: [], context: nil, progress: nil, completed: nil)
-    duration.text = parseDuration(duration: lesson.videoDuration)
+    let durationInSec = lesson.videoDuration/1000
+    duration.text = parseDuration(duration:durationInSec)
     byline.text = "\(lesson.title) / \(lesson.presenterName)"
     lessonDescription.text = lesson.lessonDescription
+    if let progress = progress{
+      let progress = progress.progress/Float(durationInSec)
+      lessonProgress.progress = progress
+      lessonProgress.isHidden = false
+    }
+    else{
+      lessonProgress.isHidden = true
+    }
   }
   
   func parseDuration(duration : Int) -> String{
     var durationStr = ""
-    let milliseconds = duration/1000
-    let seconds = milliseconds % 60
-    let minutes = (milliseconds / 60) % 60
-    let hours = (milliseconds / (60*60)) % 60
+    let seconds = duration % 60
+    let minutes = (duration / 60) % 60
+    let hours = (duration / (60*60)) % 60
     if hours > 0{
       durationStr+="\(hours):"
     }

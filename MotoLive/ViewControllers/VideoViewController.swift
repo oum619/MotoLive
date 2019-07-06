@@ -16,7 +16,7 @@ class VideoViewController: AVPlayerViewController{
   convenience init(lesson: Lesson, progress:LessonProgress?){
     self.init()
     self.lesson = lesson
-    self.lessonProgress = progress ?? LessonProgress(lessonId: lesson.lessonId)
+    self.lessonProgress = progress ?? LessonProgress(lessonId: lesson.videoURL)
   }
   
   override func viewDidLoad() {
@@ -24,11 +24,10 @@ class VideoViewController: AVPlayerViewController{
     guard let lesson = lesson, let lessonProgress = lessonProgress else{
       return
     }
+    NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: .AVPlayerItemDidPlayToEndTime, object: nil)
     if let videoURL = URL(string:lesson.videoURL){
       player = AVPlayer(url: videoURL)
-      let durationInSec = lesson.videoDuration/1000
-      let progress = lessonProgress.progress/Float(durationInSec)
-      if progress > 0 && progress < 1{
+      if !lessonProgress.completed{
         let timeScale = player!.currentTime().timescale
         player!.seek(to: CMTime(seconds: Double(lessonProgress.progress), preferredTimescale: timeScale))
       }      
@@ -49,10 +48,17 @@ class VideoViewController: AVPlayerViewController{
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     if let lessonProgress = lessonProgress, let seconds = player?.currentTime().seconds{
-      LessonManager().updateLessonProgress(lessonProgress: lessonProgress, seconds: Float(seconds))
+      LessonManager().updateLessonProgress(lessonProgress, seconds: Float(seconds))
     }
   }
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-    return .landscape
+    return [.portrait,.landscape]
+  }
+  
+  @objc func playerDidFinishPlaying(note: NSNotification) {
+    if let lessonProgress = lessonProgress{      
+      LessonManager().updateLessonProgress(lessonProgress, completed: true)
+    }
+    dismiss(animated: true, completion: nil)
   }
 }

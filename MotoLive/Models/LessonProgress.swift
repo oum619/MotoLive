@@ -10,15 +10,16 @@ import Foundation
 import RealmSwift
 
 class LessonProgress : Object{
-  @objc dynamic var lessonId: Int = 0
+  @objc dynamic var videoURL: String = ""
   @objc dynamic var progress: Float = 0 // video progress in seconds
+  @objc dynamic var completed: Bool = false // video was watched to the end
   
   override static func primaryKey() -> String? {
-    return "lessonId"
+    return "videoURL"
   }
   
-  convenience init(lessonId: Int) {
+  convenience init(lessonId: String) {
     self.init()
-    self.lessonId = lessonId
+    self.videoURL = lessonId
   }
 }

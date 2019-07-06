@@ -37,9 +37,15 @@ class LessonManager : DBManager{
       return db.objects(LessonProgress.self)
   }
   
-  func updateLessonProgress(lessonProgress:LessonProgress, seconds: Float){
+  func updateLessonProgress(_ lessonProgress:LessonProgress, seconds:Float){
     try! self.db.write() {
-      lessonProgress.progress = seconds
+      lessonProgress.progress = seconds      
+      self.db.add(lessonProgress, update: .modified)
+    }
+  }
+  func updateLessonProgress(_ lessonProgress:LessonProgress, completed:Bool){
+    try! self.db.write() {
+      lessonProgress.completed = completed
       self.db.add(lessonProgress, update: .modified)
     }
   }

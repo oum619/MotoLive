@@ -10,6 +10,7 @@
 		4DA88BE922CEE54D00F60BEB /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA88BE822CEE54D00F60BEB /* DBManager.swift */; };
 		4DA88BEB22CF4D8400F60BEB /* LessonProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA88BEA22CF4D8400F60BEB /* LessonProgress.swift */; };
 		4DA88BEE22CF7CEA00F60BEB /* UIProgressView+Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA88BED22CF7CEA00F60BEB /* UIProgressView+Height.swift */; };
+		4DA88BF022CF97E600F60BEB /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA88BEF22CF97E600F60BEB /* UIColor+Hex.swift */; };
 		4DF2BFA422CCCE47004F85F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2BFA322CCCE47004F85F2 /* AppDelegate.swift */; };
 		4DF2BFA622CCCE47004F85F2 /* LessonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2BFA522CCCE47004F85F2 /* LessonsViewController.swift */; };
 		4DF2BFA922CCCE47004F85F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2BFA722CCCE47004F85F2 /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 		4DA88BE822CEE54D00F60BEB /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		4DA88BEA22CF4D8400F60BEB /* LessonProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonProgress.swift; sourceTree = "<group>"; };
 		4DA88BED22CF7CEA00F60BEB /* UIProgressView+Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIProgressView+Height.swift"; sourceTree = "<group>"; };
+		4DA88BEF22CF97E600F60BEB /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		4DF2BFA022CCCE47004F85F2 /* MotoLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MotoLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DF2BFA322CCCE47004F85F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DF2BFA522CCCE47004F85F2 /* LessonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				4DA88BED22CF7CEA00F60BEB /* UIProgressView+Height.swift */,
+				4DA88BEF22CF97E600F60BEB /* UIColor+Hex.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -116,8 +119,8 @@
 				4DF2BFCA22CCD5B3004F85F2 /* ViewModels */,
 				4DF2BFC322CCCE85004F85F2 /* Models */,
 				4DF2BFD022CECE13004F85F2 /* ViewControllers */,
-				4DA88BEC22CF7CCA00F60BEB /* Extentions */,
 				4DF2BFCD22CCDF3A004F85F2 /* Cells */,
+				4DA88BEC22CF7CCA00F60BEB /* Extentions */,
 				4DF2BFA322CCCE47004F85F2 /* AppDelegate.swift */,
 				4DF2BFA722CCCE47004F85F2 /* Main.storyboard */,
 				4DF2BFAA22CCCE49004F85F2 /* Assets.xcassets */,
@@ -365,6 +368,7 @@
 				4DF2BFD222CECE33004F85F2 /* VideoViewController.swift in Sources */,
 				4DF2BFCF22CCDF50004F85F2 /* LessonCell.swift in Sources */,
 				4DA88BE922CEE54D00F60BEB /* DBManager.swift in Sources */,
+				4DA88BF022CF97E600F60BEB /* UIColor+Hex.swift in Sources */,
 				4DF2BFA622CCCE47004F85F2 /* LessonsViewController.swift in Sources */,
 				4DF2BFA422CCCE47004F85F2 /* AppDelegate.swift in Sources */,
 				4DF2BFC922CCD2DE004F85F2 /* APIClient.swift in Sources */,

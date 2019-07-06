@@ -60,8 +60,8 @@ extension LessonsViewController : UITableViewDataSource{
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: LessonCell.reuseIdentifier) as! LessonCell
     let lesson = lessons[indexPath.row]
-    let progress = lessonProgress.filter{$0.lessonId == lesson.lessonId}.first
-    cell.configure(lesson: lesson ,progress: progress)
+    let progress = lessonProgress.filter{$0.videoURL == lesson.videoURL}.first
+    cell.configure(lesson: lesson ,lessonProgress: progress)
     return cell
   }
 }
@@ -69,7 +69,7 @@ extension LessonsViewController : UITableViewDataSource{
 extension LessonsViewController : UITableViewDelegate{
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let lesson = lessons[indexPath.row]
-    let progress = lessonProgress.filter{$0.lessonId == lesson.lessonId}.first
+    let progress = lessonProgress.filter{$0.videoURL == lesson.videoURL}.first
     let videoVC = VideoViewController(lesson: lesson, progress: progress)
     present(videoVC, animated: true, completion: nil)
   }

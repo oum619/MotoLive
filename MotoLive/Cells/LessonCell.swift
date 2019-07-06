@@ -18,7 +18,7 @@ class LessonCell : UITableViewCell{
   @IBOutlet weak var thumbnail: UIImageView!
   @IBOutlet weak var byline: UILabel!
   @IBOutlet weak var lessonDescription: UILabel!
-  @IBOutlet weak var lessonProgress: UIProgressView!
+  @IBOutlet weak var progressBar: UIProgressView!
   
   
   override func awakeFromNib() {
@@ -27,22 +27,29 @@ class LessonCell : UITableViewCell{
     duration.layer.cornerRadius = 5
   }
   
-  func configure(lesson:Lesson, progress:LessonProgress?){
+  func configure(lesson:Lesson, lessonProgress:LessonProgress?){
     thumbnail.sd_setImage(with: URL(string: lesson.thumbnailURL), placeholderImage: nil, options: [], context: nil, progress: nil, completed: nil)
     let durationInSec = lesson.videoDuration/1000
     duration.text = parseDuration(duration:durationInSec)
     byline.text = "\(lesson.title) / \(lesson.presenterName)"
     lessonDescription.text = lesson.lessonDescription
-    if let progress = progress{
-      let progress = progress.progress/Float(durationInSec)
-      lessonProgress.progress = progress
-      lessonProgress.isHidden = false
+    if let lessonProgress = lessonProgress{
+      progressBar.progress = lessonProgress.progress/Float(durationInSec)
+      progressBar.isHidden = false
+      setCompleted(completed: lessonProgress.completed)
     }
     else{
-      lessonProgress.isHidden = true
+      progressBar.isHidden = true
+      setCompleted(completed: false)      
     }
   }
   
+  func setCompleted(completed:Bool){
+    let alpha:CGFloat = completed ? 0.7 : 1
+    byline.textColor = UIColor(rgb:0x2a439a).withAlphaComponent(alpha)
+    thumbnail.alpha = alpha
+    duration.alpha = alpha
+  }
   func parseDuration(duration : Int) -> String{
     var durationStr = ""
     let seconds = duration % 60

@@ -27,6 +27,6 @@ class Lesson : Object, Codable {
     case videoDuration = "video_duration"
   }
   override static func primaryKey() -> String? {
-    return "lessonId"
+    return "videoURL"
   }
 }

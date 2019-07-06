@@ -15,6 +15,7 @@ class LessonsViewController: UIViewController {
   var lessons = LessonManager.shared.getLessons()
   var lessonProgress = LessonManager.shared.getLessonsProgress()
   var hideSelectedCell: Int?
+  var contectOffset:CGPoint = .zero
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -23,12 +24,18 @@ class LessonsViewController: UIViewController {
     refreshControl.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
     pullToRefresh()
   }
-  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     tableView.reloadData()
   }
-  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    tableView.setContentOffset(contectOffset, animated: true)
+  }
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    contectOffset = tableView.contentOffset
+  }
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
     return .portrait
   }

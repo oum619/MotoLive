@@ -14,6 +14,7 @@ class LessonsViewController: UIViewController {
   let refreshControl = UIRefreshControl()
   var lessons = LessonManager.shared.getLessons()
   var lessonProgress = LessonManager.shared.getLessonsProgress()
+  var hideSelectedCell: Int?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -62,6 +63,7 @@ extension LessonsViewController : UITableViewDataSource{
     let lesson = lessons[indexPath.row]
     let progress = lessonProgress.filter{$0.videoURL == lesson.videoURL}.first
     cell.configure(lesson: lesson ,lessonProgress: progress)
+    cell.thumbnail.isHidden = hideSelectedCell == indexPath.row
     return cell
   }
 }
@@ -69,10 +71,50 @@ extension LessonsViewController : UITableViewDataSource{
 extension LessonsViewController : UITableViewDelegate{
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let lesson = lessons[indexPath.row]
+    hideSelectedCell = indexPath.row
     let progress = lessonProgress.filter{$0.videoURL == lesson.videoURL}.first
     let videoVC = VideoViewController(lesson: lesson, progress: progress)
+    videoVC.transitioningDelegate = self
     present(videoVC, animated: true, completion: nil)
   }
 }
 
 
+extension LessonsViewController : ImageTransitionProtocol{
+  
+  // hide selected thumbnail for tranisition snapshot
+  func tranisitionSetup(){
+    tableView.reloadData()
+  }
+  
+  // unhide selected after tranisition snapshot is taken
+  func tranisitionCleanup(){
+    hideSelectedCell = nil
+    tableView.reloadData()
+  }
+  
+  // Return selected cell thumbnail image
+  func thumbnailInfo() -> (image: UIImage, frame: CGRect)? {    
+    if let indexPath = tableView.indexPathForSelectedRow{
+      if let selectCell = tableView.cellForRow(at: indexPath) as? LessonCell{
+        var cellRect = tableView.convert(selectCell.frame, to: nil)
+        cellRect.size.height = selectCell.thumbnail.frame.height
+        if let thumbnail = selectCell.thumbnail?.image{
+          return (image:thumbnail, frame:cellRect)
+        }
+      }
+    }
+    return nil
+  }
+}
+
+extension LessonsViewController : UIViewControllerTransitioningDelegate{
+  func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController)
+    -> UIViewControllerAnimatedTransitioning? {
+      return ImageTransition(delegate: self)
+  }
+  func animationController(forDismissed dismissed: UIViewController)
+    -> UIViewControllerAnimatedTransitioning? {
+      return nil
+  }
+}

@@ -38,17 +38,17 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0D-hy-Af7">
                                                     <rect key="frame" x="10" y="287.5" width="394" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Title / Presenter" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gc2-0T-sE9">
                                                     <rect key="frame" x="10" y="264.5" width="394" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.16470588235294117" green="0.2627450980392157" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="duration" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XO9-yp-jQ9">
-                                                    <rect key="frame" x="322" y="185" width="67" height="33"/>
+                                                    <rect key="frame" x="327" y="188" width="67" height="33"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
@@ -76,18 +76,18 @@
                                                 <constraint firstItem="I0D-hy-Af7" firstAttribute="top" secondItem="Gc2-0T-sE9" secondAttribute="bottom" constant="5" id="NCK-HQ-WxV"/>
                                                 <constraint firstItem="Hw2-uE-9QE" firstAttribute="top" secondItem="yt1-6Q-vlT" secondAttribute="top" id="WsT-2E-4e8"/>
                                                 <constraint firstAttribute="trailing" secondItem="8HM-so-7NC" secondAttribute="trailing" id="ciT-Pa-tKa"/>
-                                                <constraint firstAttribute="trailing" secondItem="XO9-yp-jQ9" secondAttribute="trailing" constant="25" id="cly-3L-DUR"/>
+                                                <constraint firstAttribute="trailing" secondItem="XO9-yp-jQ9" secondAttribute="trailing" constant="20" id="cly-3L-DUR"/>
                                                 <constraint firstItem="I0D-hy-Af7" firstAttribute="trailing" secondItem="Gc2-0T-sE9" secondAttribute="trailing" id="haE-Zc-AR6"/>
                                                 <constraint firstItem="Hw2-uE-9QE" firstAttribute="leading" secondItem="yt1-6Q-vlT" secondAttribute="leading" id="k7O-gJ-moC"/>
                                                 <constraint firstAttribute="bottom" secondItem="I0D-hy-Af7" secondAttribute="bottom" constant="15" id="nnh-kC-lqI"/>
-                                                <constraint firstItem="XO9-yp-jQ9" firstAttribute="bottom" secondItem="Hw2-uE-9QE" secondAttribute="bottom" constant="-15" id="t4L-79-nBL"/>
+                                                <constraint firstItem="XO9-yp-jQ9" firstAttribute="bottom" secondItem="Hw2-uE-9QE" secondAttribute="bottom" constant="-12" id="t4L-79-nBL"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="byline" destination="Gc2-0T-sE9" id="kVW-lI-PYk"/>
                                             <outlet property="duration" destination="XO9-yp-jQ9" id="KJB-fN-wkk"/>
                                             <outlet property="lessonDescription" destination="I0D-hy-Af7" id="pvj-at-6aH"/>
-                                            <outlet property="lessonProgress" destination="8HM-so-7NC" id="XeL-sO-2fb"/>
+                                            <outlet property="progressBar" destination="8HM-so-7NC" id="TLg-2y-gVM"/>
                                             <outlet property="thumbnail" destination="Hw2-uE-9QE" id="ick-jJ-bXf"/>
                                         </connections>
                                     </tableViewCell>

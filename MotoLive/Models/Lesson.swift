@@ -10,7 +10,6 @@ import Foundation
 import RealmSwift
 
 class Lesson : Object, Codable {
-  @objc dynamic var lessonId = Int(arc4random_uniform(9999999))
   @objc dynamic var title: String
   @objc dynamic var presenterName : String
   @objc dynamic var lessonDescription: String

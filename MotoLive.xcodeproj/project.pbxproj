@@ -108,6 +108,7 @@
 		4DF2BF9722CCCE47004F85F2 = {
 			isa = PBXGroup;
 			children = (
+				4DA88BFB22D189B100F60BEB /* README.md */,
 				4DF2BFA222CCCE47004F85F2 /* MotoLive */,
 				4DF2BFB722CCCE49004F85F2 /* MotoLiveTests */,
 				4DF2BFA122CCCE47004F85F2 /* Products */,
@@ -139,7 +140,6 @@
 				4DF2BFAA22CCCE49004F85F2 /* Assets.xcassets */,
 				4DF2BFAC22CCCE49004F85F2 /* LaunchScreen.storyboard */,
 				4DF2BFAF22CCCE49004F85F2 /* Info.plist */,
-				4DA88BFB22D189B100F60BEB /* README.md */,
 			);
 			path = MotoLive;
 			sourceTree = "<group>";

@@ -29,7 +29,8 @@ class ImageTransition: NSObject, UIViewControllerAnimatedTransitioning {
   }
   func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
     guard let fromVC = transitionContext.viewController(forKey:.from),
-      let toView = transitionContext.view(forKey: .to),
+      let toVC =  transitionContext.viewController(forKey: .to),
+      let toView =  transitionContext.view(forKey: .to),
       let imageInfo = fromDelegate?.thumbnailInfo()
       else {
         return
@@ -46,6 +47,7 @@ class ImageTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
     // add the target view with alpha 0
     toView.alpha = 0
+    toView.frame = transitionContext.finalFrame(for: toVC)
     containerView.addSubview(toView)
     
     // Add the thumbail which will move during transition

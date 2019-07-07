@@ -12,6 +12,7 @@
 		4DA88BEE22CF7CEA00F60BEB /* UIProgressView+Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA88BED22CF7CEA00F60BEB /* UIProgressView+Height.swift */; };
 		4DA88BF022CF97E600F60BEB /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA88BEF22CF97E600F60BEB /* UIColor+Hex.swift */; };
 		4DA88BF622D0423D00F60BEB /* ImageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA88BF522D0423D00F60BEB /* ImageTransition.swift */; };
+		4DA88BFC22D189B100F60BEB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4DA88BFB22D189B100F60BEB /* README.md */; };
 		4DF2BFA422CCCE47004F85F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2BFA322CCCE47004F85F2 /* AppDelegate.swift */; };
 		4DF2BFA622CCCE47004F85F2 /* LessonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2BFA522CCCE47004F85F2 /* LessonsViewController.swift */; };
 		4DF2BFA922CCCE47004F85F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2BFA722CCCE47004F85F2 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		4DA88BED22CF7CEA00F60BEB /* UIProgressView+Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIProgressView+Height.swift"; sourceTree = "<group>"; };
 		4DA88BEF22CF97E600F60BEB /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		4DA88BF522D0423D00F60BEB /* ImageTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransition.swift; sourceTree = "<group>"; };
+		4DA88BFB22D189B100F60BEB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4DF2BFA022CCCE47004F85F2 /* MotoLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MotoLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DF2BFA322CCCE47004F85F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DF2BFA522CCCE47004F85F2 /* LessonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsViewController.swift; sourceTree = "<group>"; };
@@ -126,17 +128,18 @@
 		4DF2BFA222CCCE47004F85F2 /* MotoLive */ = {
 			isa = PBXGroup;
 			children = (
-				4DA88BF422D041F200F60BEB /* Transitions */,
 				4DF2BFCA22CCD5B3004F85F2 /* ViewModels */,
 				4DF2BFC322CCCE85004F85F2 /* Models */,
 				4DF2BFD022CECE13004F85F2 /* ViewControllers */,
 				4DF2BFCD22CCDF3A004F85F2 /* Cells */,
 				4DA88BEC22CF7CCA00F60BEB /* Extentions */,
+				4DA88BF422D041F200F60BEB /* Transitions */,
 				4DF2BFA322CCCE47004F85F2 /* AppDelegate.swift */,
 				4DF2BFA722CCCE47004F85F2 /* Main.storyboard */,
 				4DF2BFAA22CCCE49004F85F2 /* Assets.xcassets */,
 				4DF2BFAC22CCCE49004F85F2 /* LaunchScreen.storyboard */,
 				4DF2BFAF22CCCE49004F85F2 /* Info.plist */,
+				4DA88BFB22D189B100F60BEB /* README.md */,
 			);
 			path = MotoLive;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 			files = (
 				4DF2BFAE22CCCE49004F85F2 /* LaunchScreen.storyboard in Resources */,
 				4DF2BFAB22CCCE49004F85F2 /* Assets.xcassets in Resources */,
+				4DA88BFC22D189B100F60BEB /* README.md in Resources */,
 				4DF2BFA922CCCE47004F85F2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,8 +552,8 @@
 			baseConfigurationReference = 0DDA55A8F4D45265D563488D /* Pods-MotoLive.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MP46X57DH6;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MotoLive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -558,6 +562,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ota.motomi.motoLive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -568,8 +573,8 @@
 			baseConfigurationReference = 5FB7F628EC9EF73D57C0B5E9 /* Pods-MotoLive.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MP46X57DH6;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MotoLive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -578,6 +583,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ota.motomi.motoLive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
